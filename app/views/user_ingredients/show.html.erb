@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_ingredient.user_id %>
+</p>
+
+<p>
+  <strong>Ingredient:</strong>
+  <%= @user_ingredient.ingredient %>
+</p>
+
+<p>
+  <strong>Quanity:</strong>
+  <%= @user_ingredient.quanity %>
+</p>
+
+<%= link_to 'Edit', edit_user_ingredient_path(@user_ingredient) %> |
+<%= link_to 'Back', user_ingredients_path %>
