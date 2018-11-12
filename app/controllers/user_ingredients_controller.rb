@@ -5,9 +5,9 @@ class UserIngredientsController < ApplicationController
   # GET /user_ingredients.json
   def index
     data =  if params[:user_parent_group].present?
-               {data: UserIngredient.includes(:ingredient).joins(:ingredient).where(user_id: 1).map{|x| {id: x.ingredient_parent_id, name: x.ingredient_parent_name}}.uniq}
+               {data: UserIngredient.includes(:ingredient).joins(:ingredient).where(user_id: params[:user_id]).map{|x| {id: x.ingredient_parent_id, name: x.ingredient_parent_name}}.uniq}
             else
-              UserIngredient.where(user_id: 1).as_json(methods: :ingredient_name)
+              UserIngredient.joins(:ingredient).where("parent_id = ?", params[:parent_id]).where(user_id: params[:user_id]).as_json(methods: :ingredient_name)
             end
     render json: data
   end
