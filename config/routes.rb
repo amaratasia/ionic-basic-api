@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :recipes
   resources :users do
   	post "login", on: :collection
   end
