@@ -11,11 +11,10 @@ class RecipesController < ApplicationController
 
     ri.each do |rigre|
       resp =  rigre.recipe.recipe_ingredients.pluck(:ingredient_id) - ingre
-      correct << rigre.recipe if resp.present?
+      correct << rigre.recipe if resp.blank?
     end
 
     render json: correct
-
   end
 
   # GET /recipes/1
