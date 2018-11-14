@@ -1,9 +1,11 @@
 default: &default
   pool: 5
   timeout: 5000
-  database: food_cycled_api
+  database: d521vaafgk73n1
+  username: lfkoulyscggiux
+  password: 2b2f88d344ca8cb89d2cc3507762627a554acb07b3477e38ad09c2932ac4dc15
   adapter: postgresql
-  host: localhost
+  host: ec2-54-243-216-33.compute-1.amazonaws.com
   port: 5432
 
 development:
