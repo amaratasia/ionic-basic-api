@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
       correct << rigre.recipe if resp.blank?
     end
 
-    render json: correct
+    render json: correct.uniq
   end
 
   # GET /recipes/1
