@@ -17,6 +17,12 @@ class UserIngredientsController < ApplicationController
   def show
   end
 
+  def cook_recipe
+    recipe = Recipe.find(params[:id])
+    recipe.complete_cooking(params[:user_id])
+    render json: {}
+  end
+
   # GET /user_ingredients/new
   def new
     @user_ingredient = UserIngredient.new
