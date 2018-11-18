@@ -1,4 +1,4 @@
-Ingredient.all.delete_all
+# Ingredient.all.delete_all
 parent_categories = ["SPICES", "VEGGIES", "Meat", "Fruits"]
 
 parent_categories.each do |ingre|
@@ -15,7 +15,7 @@ child_category.each do |parent, child|
 end
 
 
-Recipe.all.delete_all
+# Recipe.all.delete_all
 lamb = Recipe.create(name: "LAMB CURRY".titleize, ingredient_list: "<li>Place water, meat, garlic, tomatoes, ginger, onions and all spices except garam masala in a pan. Mix together. </li><li>Bring to the boil until onions and tomatoes have softened and most of the water has evaporated. </li><li>Reduce heat and place lid on pan. Cook for 40- 45 minutes, stirring occasionally and adding small amounts of water if necessary. Stir in oil, add garam masala and green chilies. </li><li>Cook on high heat and stir for further 3 minutes. Add fresh tomatoes and fresh coriander.</li>")
 
 ingres = Ingredient.where(name: ["lamb", "cloves", "garlic ", "ginger  ", "tomatoes ", "ONION", "red chili powder", "cumin seeds ", "coriander powder ", "turmeric powder", "salt ", "green chilies"].map(&:strip).map(&:titleize))

@@ -1,6 +1,8 @@
 class UserIngredient < ApplicationRecord
   belongs_to :ingredient
 
+  after_save :remover
+
   def ingredient_name
   	ingredient.name
   end
@@ -9,5 +11,11 @@ class UserIngredient < ApplicationRecord
   end
 	def ingredient_parent_id
   	ingredient.parent_id
+  end
+
+  def remover
+    if quanity < 1
+      delete
+    end
   end
 end
