@@ -20,6 +20,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
+    render json: @recipe
   end
 
   # GET /recipes/new
@@ -74,7 +75,7 @@ class RecipesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
-      @recipe = Recipe.find(params[:id]).as_json(:include => {:recipe_ingredients =>{include: :ingredient}})
+      @recipe = Recipe.includes(:recipe_ingredients=>:ingredient).first.as_json(:include => {:recipe_ingredients =>{include: :ingredient}})
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
