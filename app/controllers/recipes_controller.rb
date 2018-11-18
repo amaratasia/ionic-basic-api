@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
     correct = []
     ingre =  UserIngredient.where(user_id: params[:user_id]).pluck(:ingredient_id)
-    ri = RecipeIngredient.where(ingredient_id: ingre).group(:recipe_id, :id)
+    ri = RecipeIngredient.includes(:recipe=>:recipe_ingredients).where(ingredient_id: ingre).group(:recipe_id, :id)
 
     ri.each do |rigre|
       resp =  rigre.recipe.recipe_ingredients.pluck(:ingredient_id) - ingre
