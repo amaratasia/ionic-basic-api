@@ -4,9 +4,9 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    # @recipes = Recipe.all
     correct = []
-    ingre =  UserIngredient.where(user_id: params[:user_id]).pluck(:ingredient_id)
+    ingre =  UserIngredient.where(user_id: params[:user_id]).where("quanity > 0").pluck(:ingredient_id)
     ri = RecipeIngredient.includes(:recipe=>:recipe_ingredients).where(ingredient_id: ingre).group(:recipe_id, :id)
 
     ri.each do |rigre|
