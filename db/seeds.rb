@@ -14,6 +14,7 @@ child_category.each do |parent, child|
 	end
 end
 
+user = User.find_or_create_by(email: "harika.adivanne@gmail.com", password: "harika@ionic")
 
 # Recipe.all.delete_all
 lamb = Recipe.create(name: "LAMB CURRY".titleize, ingredient_list: "<li>Place water, meat, garlic, tomatoes, ginger, onions and all spices except garam masala in a pan. Mix together. </li><li>Bring to the boil until onions and tomatoes have softened and most of the water has evaporated. </li><li>Reduce heat and place lid on pan. Cook for 40- 45 minutes, stirring occasionally and adding small amounts of water if necessary. Stir in oil, add garam masala and green chilies. </li><li>Cook on high heat and stir for further 3 minutes. Add fresh tomatoes and fresh coriander.</li>")
@@ -22,9 +23,48 @@ ingres = Ingredient.where(name: ["lamb", "cloves", "garlic ", "ginger  ", "tomat
 #Assign Ingredients to Lamb Curry
 ingres.each do |ingre|
 	lamb.recipe_ingredients << RecipeIngredient.new(ingredient_id: ingre.id)
+	user.user_ingredients << UserIngredient.new(ingredient_id: ingre.id, quanity: rand(1..10))
 end
-User.all.delete_all
-user = User.find_or_create_by(email: "harika.adivanne@gmail.com", password: "harika@ionic")
-ingres.each do|ingre|
+
+lamb = Recipe.create(name: "CHICKEN CURRY".titleize, ingredient_list: "<li>Place water, meat, garlic, tomatoes, ginger, onions and all spices in a pan. Mix together. </li><li>Bring to the boil until onions and tomatoes have softened and most of the water has evaporated. </li><li>Reduce heat and place lid on pan. Cook for 40- 45 minutes, stirring occasionally and adding small amounts of water if necessary. Stir in oil, add green chilies. </li><li>Cook on high heat and stir for further 3 minutes. Add fresh tomatoes and fresh coriander.</li>")
+
+ingres = Ingredient.where(name: ["Chicken", "cloves ", "garlic ", "ginger  ", "tomatoes ", "ONION", "red chili powder ", "cumin seeds ", "coriander powder ", "turmeric powder", "salt ", "green chilies"].map(&:strip).map(&:titleize))
+#Assign Ingredients to reciepe
+ingres.each do |ingre|
+	lamb.recipe_ingredients << RecipeIngredient.new(ingredient_id: ingre.id)
+	user.user_ingredients << UserIngredient.new(ingredient_id: ingre.id, quanity: rand(1..10))
+end
+
+lamb = Recipe.create(name: "FISH CURRY".titleize, ingredient_list: "<li>Place water, meat, garlic, tomatoes, ginger, onions and all spices except garam masala in a pan. Mix together. </li><li>Bring to the boil until onions and tomatoes have softened and most of the water has evaporated. </li><li>Reduce heat and place lid on pan. Cook for 40- 45 minutes, stirring occasionally and adding small amounts of water if necessary. Stir in oil, add garam masala and green chilies. </li><li>Cook on high heat and stir for further 3 minutes. Add fresh tomatoes and fresh coriander.</li>")
+
+ingres = Ingredient.where(name: ["FISH", "cloves ", "garlic ", "ginger  ", "tomatoes ", "ONION", "red chili powder ", "cumin seeds ", "coriander powder ", "turmeric powder", "salt ", "green chilies"].map(&:strip).map(&:titleize))
+#Assign Ingredients to reciepe
+ingres.each do |ingre|
+	lamb.recipe_ingredients << RecipeIngredient.new(ingredient_id: ingre.id)
+	user.user_ingredients << UserIngredient.new(ingredient_id: ingre.id, quanity: rand(1..10))
+end
+
+
+lamb = Recipe.create(name: "Tomato CURRY".titleize, ingredient_list: "<li>Place water, Tomato, garlic, tomatoes, ginger, onions and all spices except garam masala in a pan. Mix together. </li><li>Bring to the boil until onions and tomatoes have softened and most of the water has evaporated. </li><li>Reduce heat and place lid on pan. Cook for 20- 25 minutes, stirring occasionally and adding small amounts of water if necessary. Stir in oil, add garam masala and green chilies. </li><li>Cook on high heat and stir for further 3 minutes.</li>")
+
+ingres = Ingredient.where(name: ["Tomato", "cloves ", "garlic ", "ginger  ", "tomatoes ", "ONION", "red chili powder ", "cumin seeds ", "coriander powder ", "turmeric powder", "salt ", "green chilies"].map(&:strip).map(&:titleize))
+
+#Assign Ingredients to reciepe
+
+ingres.each do |ingre|
+	lamb.recipe_ingredients << RecipeIngredient.new(ingredient_id: ingre.id)
+	user.user_ingredients << UserIngredient.new(ingredient_id: ingre.id, quanity: rand(1..10))
+end
+
+
+lamb = Recipe.create(name: "Vegetable Curry".titleize, ingredient_list: "<li>Place water, tomatos,potato,onion, garlic, tomatoes and all spices except garam masala in a pan. Mix together. </li><li>Bring to the boil until onions and tomatoes have softened and most of the water has evaporated. </li><li>Reduce heat and place lid on pan. Cook for 40- 45 minutes, stirring occasionally and adding small amounts of water if necessary. Stir in oil, add garam masala and green chilies. </li><li>Cook on high heat and stir for further 3 minutes. Add fresh tomatoes and fresh coriander.</li>")
+
+ingres = Ingredient.where(name: ['Tomato', 'Potato', 'cloves ', 'garlic ', 'ginger  ', 'tomatoes ', 'ONION', 'red chili powder ', 'cumin seeds ', 'coriander powder ', 'turmeric powder', 'salt ', 'green chilies' ].map(&:strip).map(&:titleize))
+
+#Assign Ingredients to reciepe
+
+
+ingres.each do |ingre|
+	lamb.recipe_ingredients << RecipeIngredient.new(ingredient_id: ingre.id)
 	user.user_ingredients << UserIngredient.new(ingredient_id: ingre.id, quanity: rand(1..10))
 end
