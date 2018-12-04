@@ -4,7 +4,8 @@ class PastHistoriesController < ApplicationController
   # GET /past_histories
   # GET /past_histories.json
   def index
-    @past_histories = PastHistory.all
+    past_histories = PastHistory.where(user_id: params[:user_id])
+    json: {data: past_histories.as_json(include: :recipe, only: :created_at)}
   end
 
   # GET /past_histories/1
