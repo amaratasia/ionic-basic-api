@@ -8,5 +8,6 @@ class Recipe < ApplicationRecord
 			ingre.quanity = ingre.quanity.to_i - recipe_ingre[ingre.ingredient_id].to_i
 			ingre.save
 		end
+		PastHistory.create(user_id: user_id, recipe: self)
 	end
 end
