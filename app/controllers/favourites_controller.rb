@@ -24,7 +24,7 @@ class FavouritesController < ApplicationController
   # POST /favourites
   # POST /favourites.json
   def create
-    @favourite = Favourite.new(favourite_params)
+    @favourite = Favourite.find_or_initialize_by(favourite_params)
 
     respond_to do |format|
       if @favourite.save
