@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favourites
   resources :past_histories, only: [:index, :create]
   resources :recipes
   resources :users do

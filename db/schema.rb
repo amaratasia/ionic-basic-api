@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181118081200) do
+ActiveRecord::Schema.define(version: 20181215101825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_favourites_on_recipe_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -21,6 +30,15 @@ ActiveRecord::Schema.define(version: 20181118081200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_ingredients_on_parent_id"
+  end
+
+  create_table "past_histories", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_past_histories_on_recipe_id"
+    t.index ["user_id"], name: "index_past_histories_on_user_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -36,6 +54,7 @@ ActiveRecord::Schema.define(version: 20181118081200) do
     t.string "ingredient_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "video"
   end
 
   create_table "user_ingredients", force: :cascade do |t|
@@ -55,4 +74,8 @@ ActiveRecord::Schema.define(version: 20181118081200) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "favourites", "recipes"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "past_histories", "recipes"
+  add_foreign_key "past_histories", "users"
 end
